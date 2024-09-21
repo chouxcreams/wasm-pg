@@ -1,0 +1,10 @@
+[tasks.build]
+description = 'wasmとしてビルド'
+outputs = ['target/wasm32-wasip1/debug/wasm-pg.wasm']
+run = "cargo build --target wasm32-wasip1"
+sources = ['Cargo.toml', 'src/**/*.rs']
+
+[tasks.run]
+depends = ['build']
+description = 'wasmerでwasnを実行'
+run = "wasmer run target/wasm32-wasip1/debug/wasm-pg.wasm"
